@@ -1,0 +1,2 @@
+id;nome;email;cargo;empresa;isGerente;isAtivo;tipoFuncionario;ultimaTrocaSenha;
+1,Ronald McDonald,mcdonalds@gmail.com,Gerente,Mc Donald's,true,true,Admin,2023-11-27,
