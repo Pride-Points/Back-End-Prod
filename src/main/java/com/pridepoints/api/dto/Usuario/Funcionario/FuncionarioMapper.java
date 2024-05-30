@@ -87,14 +87,4 @@ public class FuncionarioMapper {
         return funcionarioUpdateDTO;
     }
 
-    public static FuncionarioUpdateDTO of(Funcionario funcionario){
-        FuncionarioUpdateDTO funcionarioUpdateDTO = new FuncionarioUpdateDTO();
-
-        funcionarioUpdateDTO.setId(funcionario.getId());
-        funcionarioUpdateDTO.setNome(funcionario.getNome());
-        funcionarioUpdateDTO.setCargo(funcionario.getCargo());
-        funcionarioUpdateDTO.setEmail(funcionario.getEmail());
-
-        return funcionarioUpdateDTO;
-    }
 }

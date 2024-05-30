@@ -134,14 +134,6 @@ public class EmpresaController {
             return ResponseEntity.ok(avaliacaoZerada);
         }
     }
-    @GetMapping("/completo")
-    public ResponseEntity<List<EmpresaFullDTO>> listarEmpresasCompleto() {
-        List<EmpresaFullDTO> listaDeEmpresas = empresaService.listarEmpresasCompleto();
-        if (listaDeEmpresas == null || listaDeEmpresas.isEmpty()) {
-            return ResponseEntity.status(204).build();
-        }
-        return ResponseEntity.status(200).body(listaDeEmpresas);
-    }
 
 
 }

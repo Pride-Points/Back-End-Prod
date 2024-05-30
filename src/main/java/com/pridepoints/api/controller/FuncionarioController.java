@@ -149,18 +149,6 @@ public class FuncionarioController {
     }
 
 
-    @SecurityRequirement(name = "Bearer")
-    @PutMapping("/{id}")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public ResponseEntity<FuncionarioUpdateDTO> atualizarFuncionario(@PathVariable Long id, @RequestBody FuncionarioCriacaoDTO funcionarioRequest) {
-
-        FuncionarioUpdateDTO funcionarioAtualizado = funcionarioService.updateFuncionario(id, funcionarioRequest);
-
-        if(funcionarioAtualizado == null){
-            return ResponseEntity.notFound().build();
-    }
-        return ResponseEntity.ok().build();
-}
 
     @SecurityRequirement(name = "Bearer")
     @DeleteMapping("/{idEmpresa}/{idFunc}")
