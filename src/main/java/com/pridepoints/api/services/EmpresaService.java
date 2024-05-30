@@ -47,10 +47,7 @@ public class    EmpresaService {
         return EmpresaMapper.ofListMin(empresaList);
     }
 
-    public List<EmpresaFullDTO> listarEmpresasCompleto() {
-        List<Empresa> empresaList = empresaRepository.findAll();
-        return EmpresaMapper.ofListMax(empresaList);
-    }
+
 
     public EmpresaFullDTO buscarPorId(Long id) {
 
