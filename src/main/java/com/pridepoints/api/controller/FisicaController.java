@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import com.pridepoints.api.dto.Usuario.Fisica.FisicaImgDTO;
 
 import java.util.List;
 
@@ -30,7 +31,6 @@ public class FisicaController {
 
     @PostMapping("/login")
     public ResponseEntity<UsuarioTokenDTO> loginUsuario(@Valid @RequestBody UserDTO usuario){
-        System.out.println("esse é o usuario" + usuario.getEmail() + "essa é a senha " + usuario.getSenha());
         UsuarioTokenDTO result = null;
         boolean existsFisica = fisicaService.findUser(usuario);
         boolean existsFunc = funcionarioService.findUser(usuario);
@@ -64,7 +64,6 @@ public class FisicaController {
 
     @PostMapping
     public ResponseEntity<FisicaFullDTO> cadastrarUsuario(@Valid @RequestBody FisicaCriacaoDTO f){
-        System.out.println(f);
             FisicaFullDTO result = fisicaService.cadastrarUsuario(f);
             if(result == null){
                 return ResponseEntity.status(409).build();
@@ -91,5 +90,32 @@ public class FisicaController {
             return ResponseEntity.status(200).build();
         }
             return ResponseEntity.status(404).build();
+    }
+
+    @PostMapping("/imagem-perfil/{idUser}")
+    @SecurityRequirement(name = "Bearer")
+    public ResponseEntity<FisicaImgDTO> salvarImg(@PathVariable Long idUser, @RequestBody FisicaImgDTO f){
+        FisicaImgDTO result = fisicaService.salvarImg(idUser, f);
+
+
+        if(result == null){
+            return ResponseEntity.status(404).build();
+        }
+
+        return ResponseEntity.status(200).body(result);
+    }
+
+    @GetMapping("imagem-perfil/{idUser}")
+    @SecurityRequirement(name = "Bearer")
+    @PreAuthorize("hasRole('ROLE_FISICA')")
+    public ResponseEntity<FisicaImgDTO> buscarImgUser(@PathVariable Long idUser){
+        FisicaImgDTO result = fisicaService.buscarImgUser(idUser);
+
+
+        if(result == null){
+            return ResponseEntity.status(404).build();
+        }
+
+        return ResponseEntity.status(200).body(result);
     }
 }
