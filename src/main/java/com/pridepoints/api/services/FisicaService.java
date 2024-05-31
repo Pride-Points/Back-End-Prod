@@ -20,6 +20,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import com.pridepoints.api.dto.Usuario.Fisica.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -123,6 +124,34 @@ public class FisicaService implements iValidarTrocaDeSenha {
                     fisicaRepository.save(pessoaFisica);
         }
     }
+
+    public FisicaImgDTO salvarImg(Long idUser, FisicaImgDTO f) {
+        Optional<Fisica> fisicaOpt = fisicaRepository.findById(idUser);
+
+        if(fisicaOpt.isPresent()){
+            Fisica userBanco = fisicaOpt.get();
+            userBanco.setImgUser(f.getImgUser());
+
+            fisicaRepository.save(userBanco);
+
+            return f;
+        }
+
+        return null;
+    }
+
+    public FisicaImgDTO buscarImgUser(Long idUser) {
+        Optional<Fisica> fisicaOpt = fisicaRepository.findById(idUser);
+
+        if(fisicaOpt.isPresent()){
+            Fisica userBanco = fisicaOpt.get();
+
+            return new FisicaImgDTO(userBanco.getImgUser());
+        }
+
+        return null;
+    }
+
 
     public boolean findUser(UserDTO usuario) {
         boolean exists = fisicaRepository.existsByEmail(usuario.getEmail());
