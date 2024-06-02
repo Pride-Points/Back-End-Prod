@@ -46,7 +46,7 @@ public class AvaliacaoService {
 
         if(resultFisica.isPresent() && resultEmpresa.isPresent()){
 
-            Avaliacao novaAvaliacao = AvaliacaoMapper.of(avaliacao, resultFisica.get());
+            Avaliacao novaAvaliacao = AvaliacaoMapper.of(avaliacao, resultFisica.get(), empresaId.toString());
 
             novaAvaliacao.setEmpresa(resultEmpresa.get());
             novaAvaliacao.setPessoaFisica(resultFisica.get());
@@ -91,7 +91,7 @@ public class AvaliacaoService {
             boolean existe = avaliacaoRepository.existsById(idAvaliacao);
 
             if(existe){
-                Avaliacao avaliacaoConvertida = AvaliacaoMapper.of(novaAvaliacao, usuarioEncontrado);
+                Avaliacao avaliacaoConvertida = AvaliacaoMapper.of(novaAvaliacao, usuarioEncontrado,idEmpresa.toString());
             avaliacaoConvertida.setId(idAvaliacao);
             avaliacaoConvertida.setEmpresa(empresaEncontrada);
             avaliacaoConvertida.setPessoaFisica(usuarioEncontrado);

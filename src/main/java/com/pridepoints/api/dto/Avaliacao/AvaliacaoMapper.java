@@ -19,15 +19,16 @@ public class AvaliacaoMapper {
         return avaliacoesDTO;
     }
 
-    public static Avaliacao of(AvaliacaoCriacaoDTO avaliacaoCriacaoDTO, Fisica fisica){
+    public static Avaliacao of(AvaliacaoCriacaoDTO avaliacaoCriacaoDTO, Fisica fisica, String idEmpresa){
         Avaliacao avaliacao = new Avaliacao();
-
+        avaliacao.setIdEmpresa(idEmpresa);
         avaliacao.setNota(avaliacaoCriacaoDTO.getNota());
         avaliacao.setTag(avaliacaoCriacaoDTO.getTag());
         avaliacao.setComentario(avaliacaoCriacaoDTO.getComentario());
         avaliacao.setShared(avaliacaoCriacaoDTO.isShared());
         avaliacao.setNomeAvaliador(fisica.getNome());
         avaliacao.setResp(avaliacao.getResp());
+        System.out.println(avaliacao);
         return avaliacao;
     }
 
@@ -35,6 +36,7 @@ public class AvaliacaoMapper {
         AvaliacaoDTO avaliacaoDTO = new AvaliacaoDTO();
 
         avaliacaoDTO.setId(avaliacao.getId());
+        avaliacaoDTO.setIdEmpresa(avaliacao.getIdEmpresa());
         avaliacaoDTO.setNota(avaliacao.getNota());
         avaliacaoDTO.setDtAvaliacao(avaliacao.getDtAvaliacao());
         avaliacaoDTO.setTag(avaliacao.getTag());
@@ -43,7 +45,7 @@ public class AvaliacaoMapper {
         avaliacaoDTO.setTitle(avaliacao.getTitle());
         avaliacaoDTO.setNomeAvaliador(avaliacao.getNomeAvaliador());
         avaliacaoDTO.setComentario(avaliacao.getComentario());
-
+        System.out.println(avaliacaoDTO);
         return avaliacaoDTO;
     }
 

@@ -25,6 +25,8 @@ public class AvaliacaoDTO {
 
     private Empresa empresa;
 
+    private String idEmpresa;
+
 
     public AvaliacaoDTO(){}
 
@@ -38,6 +40,7 @@ public class AvaliacaoDTO {
         this.resp = entity.getResp();
         this.nomeAvaliador = entity.getNomeAvaliador();
         this.empresa = entity.getEmpresa();
+        this.idEmpresa = entity.getIdEmpresa();
 
     }
 
@@ -125,5 +128,13 @@ public class AvaliacaoDTO {
 
     public void setEmpresa(Empresa empresa) {
         this.empresa = empresa;
+    }
+
+    public String getIdEmpresa() {
+        return idEmpresa;
+    }
+
+    public void setIdEmpresa(String idEmpresa) {
+        this.idEmpresa = idEmpresa;
     }
 }

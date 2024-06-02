@@ -26,6 +26,8 @@ public class Avaliacao {
     @Column(columnDefinition = "TEXT")
     private String comentario;
 
+    private String idEmpresa;
+
     @ManyToOne
     @JoinColumn(name = "fisica_id")
     private Fisica pessoaFisica;
@@ -132,5 +134,31 @@ public class Avaliacao {
 
     public void setEmpresa(Empresa empresa) {
         this.empresa = empresa;
+    }
+
+    public String getIdEmpresa() {
+        return idEmpresa;
+    }
+
+    public void setIdEmpresa(String idEmpresa) {
+        this.idEmpresa = idEmpresa;
+    }
+
+    @Override
+    public String toString() {
+        return "Avaliacao{" +
+                "id=" + id +
+                ", nota=" + nota +
+                ", dtAvaliacao=" + dtAvaliacao +
+                ", tag='" + tag + '\'' +
+                ", comentario='" + comentario + '\'' +
+                ", idEmpresa='" + idEmpresa + '\'' +
+                ", pessoaFisica=" + pessoaFisica +
+                ", isShared=" + isShared +
+                ", nomeAvaliador='" + nomeAvaliador + '\'' +
+                ", Resp='" + Resp + '\'' +
+                ", title='" + title + '\'' +
+                ", empresa=" + empresa +
+                '}';
     }
 }

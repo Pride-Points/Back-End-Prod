@@ -21,6 +21,8 @@ public class AvaliacaoCriacaoDTO {
 
     private String title;
 
+    private String idEmpresa;
+
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     @JsonFormat(pattern = "dd-MM-yyyy")
@@ -82,5 +84,13 @@ public class AvaliacaoCriacaoDTO {
 
     public void setComentario(String comentario) {
         this.comentario = comentario;
+    }
+
+    public String getIdEmpresa() {
+        return idEmpresa;
+    }
+
+    public void setIdEmpresa(String idEmpresa) {
+        this.idEmpresa = idEmpresa;
     }
 }
