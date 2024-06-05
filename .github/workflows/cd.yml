@@ -8,8 +8,6 @@ on:
 jobs:
   deploy:
     runs-on: self-hosted
-    needs: 
-      - ci
     steps:
       - name: Pull Docker image
         run: docker pull emedej/pride-actions:latest
