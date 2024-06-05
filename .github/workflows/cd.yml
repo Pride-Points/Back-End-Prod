@@ -19,4 +19,4 @@ jobs:
         run: docker rm pride-actions || true
 
       - name: Run Docker container with no security profile
-        run: docker run --name pride-actions -d -p 8080:8080 -e SPRING_PROFILES_ACTIVE=nosecurity emedej/pride-actions:latest
+        run: docker run --name pride-actions -d -p 8080:8080 emedej/pride-actions:latest
