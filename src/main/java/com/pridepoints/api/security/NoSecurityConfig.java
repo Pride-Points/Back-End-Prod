@@ -1,4 +1,4 @@
-package com.example.security;
+package com.pridepoints.api.security;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
