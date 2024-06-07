@@ -94,18 +94,18 @@ public class AvaliacaoController {
 
 
 
-    @PostMapping("/{empresaId}/{usuarioId}")
-    @PreAuthorize("hasRole('ROLE_FISICA')")
-    public ResponseEntity<AvaliacaoDTO> publicarAvaliacao(@Valid @RequestBody AvaliacaoCriacaoDTO f, @PathVariable Long empresaId, @PathVariable Long usuarioId){
+        @PostMapping("/{empresaId}/{usuarioId}")
+        @PreAuthorize("hasRole('ROLE_FISICA')")
+        public ResponseEntity<AvaliacaoDTO> publicarAvaliacao(@Valid @RequestBody AvaliacaoCriacaoDTO f, @PathVariable Long empresaId, @PathVariable Long usuarioId){
 
-        AvaliacaoDTO result = avaliacaoService.publicarAvaliacaoDaEmpresa(f,empresaId,usuarioId);
-        if(result == null){
-            return ResponseEntity.status(404).build();
+            AvaliacaoDTO result = avaliacaoService.publicarAvaliacaoDaEmpresa(f,empresaId,usuarioId);
+            if(result == null){
+                return ResponseEntity.status(404).build();
+            }
+
+            return ResponseEntity.status(201).body(result);
+
         }
-
-        return ResponseEntity.status(201).body(result);
-
-    }
 
     @PutMapping("{idAvaliacao}/{idUsuario}/{idEmpresa}")
     @PreAuthorize("hasRole('ROLE_FISICA')")
